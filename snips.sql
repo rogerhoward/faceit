@@ -29,3 +29,12 @@ inner join AgLibraryFile AS File on Image.rootFile = File.id_local
 
 where Keyword.name = 'Arthur Thomas Parker'
 ORDER BY image
+
+
+
+select * 
+from AgLibraryKeywordFace AS Faces
+inner join AgLibraryKeyword AS Keyword on Faces.tag = Keyword.id_local
+where Keyword.name = 'Arthur Thomas Parker'
+ORDER BY face
+LIMIT 5000
