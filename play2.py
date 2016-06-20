@@ -5,8 +5,8 @@ import sqlite3
 from pprint import pprint
 
 
-base_input_path ='/Users/rogerhoward/Desktop/faces/samples'
-base_output_path = '/Users/rogerhoward/Desktop/faces/cropped'
+base_input_path ='/Volumes/Projects/faces/arthur'
+base_output_path = '/Volumes/Projects/faces/arthur/_crops'
 
 
 class reg(object):
@@ -26,9 +26,10 @@ class reg(object):
             self.values[attr] = val
 
 
-# database_path = '/Volumes/speedo/faces.sqlite'
+# database_path = '/Volumes/speedo/lr.lrcat'
 # database_path = 'catalog/catalog.lrcat'
-database_path = '/Users/rogerhoward/Desktop/sample_catalog.lrcat'
+# database_path = '/Users/rogerhoward/Desktop/sample_catalog.lrcat'
+database_path = '/Volumes/speedo/lr.lrcat'
 
 query = "select Image, Faces.bl_x, Faces.bl_y, Faces.br_x, Faces.br_y, Faces.tl_x, Faces.tl_y, Faces.tr_x, Faces.tr_y, Faces.imageOrientation,  Image.fileWidth, Image.fileHeight, \
 File.baseName || '.jpg' as Filename \
@@ -51,7 +52,7 @@ if __name__ == "__main__":
         if crop[3] > 0:
             aspect_ratio = (crop[2] * 1.0) / (crop[3] * 1.0)
             if True:
-                template = 'convert {input} -crop {w}x{h}+{tlx}+{tly} {output}'
+                template = 'convert \'{input}\' -crop {w}x{h}+{tlx}+{tly} \'{output}\''
                 input_path = '{}/{}'.format(base_input_path, r.Filename)
                 output_path = '{}/{}'.format(base_output_path, r.Filename)
                 data = {'input': input_path, 'output': output_path, 'w': crop[2], 'h':crop[3], 'tlx': crop[0], 'tly': crop[1]}
