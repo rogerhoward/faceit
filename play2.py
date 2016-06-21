@@ -8,6 +8,8 @@ from pprint import pprint
 base_input_path ='/Volumes/Projects/faces/arthur'
 base_output_path = '/Volumes/Projects/faces/arthur/_crops'
 
+database_path = '/Volumes/speedo/Lightroom/Lightroom.lrcat'
+
 
 class reg(object):
     values = {}
@@ -25,11 +27,6 @@ class reg(object):
             setattr(self, attr, val)
             self.values[attr] = val
 
-
-# database_path = '/Volumes/speedo/lr.lrcat'
-# database_path = 'catalog/catalog.lrcat'
-# database_path = '/Users/rogerhoward/Desktop/sample_catalog.lrcat'
-database_path = '/Volumes/speedo/lr.lrcat'
 
 query = "select Image, Faces.bl_x, Faces.bl_y, Faces.br_x, Faces.br_y, Faces.tl_x, Faces.tl_y, Faces.tr_x, Faces.tr_y, Faces.imageOrientation,  Image.fileWidth, Image.fileHeight, \
 File.baseName || '.jpg' as Filename \
